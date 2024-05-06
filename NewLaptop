@@ -1,0 +1,10 @@
+# This can be used to reset user's password on AD to create your new user's asset/upgrade
+Import-Module ActiveDirectory
+
+$Username = Read-Host "Please enter the username"
+
+$NewPassword = Read-Host "Please enter the new password" -AsSecureString
+
+Set-ADAccountPassword -Identity $Username -NewPassword $NewPassword -Reset
+
+Write-Output "Password reset successfully for $Username. Remember to Synchronize The Password"
